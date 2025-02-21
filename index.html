@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="container">
+      <section class="display"></section>
+      <section class="calculator-buttons">
+        <div class="button-row">
+          <button onclick="clearDisplay();">C</button>
+          <button onclick="convert();">±</button>
+          <button onclick="appedToDisplay('%');">%</button>
+          <button onclick="appedToDisplay('/');">&divide;</button>
+        </div>
+        <div class="button-row">
+          <button onclick="appedToDisplay('7');">7</button>
+          <button onclick="appedToDisplay('8');">8</button>
+          <button onclick="appedToDisplay('9');">9</button>
+          <button onclick="appedToDisplay('*');">×</button>
+        </div>
+        <div class="button-row">
+          <button onclick="appedToDisplay('4');">4</button>
+          <button onclick="appedToDisplay('5');">5</button>
+          <button onclick="appedToDisplay('6');">6</button>
+          <button onclick="appedToDisplay('-');">-</button>
+        </div>
+        <div class="button-row">
+          <button onclick="appedToDisplay('1');">1</button>
+          <button onclick="appedToDisplay('2');">2</button>
+          <button onclick="appedToDisplay('3');">3</button>
+          <button onclick="appedToDisplay('+');">+</button>
+        </div>
+        <div class="button-row">
+          <button onclick="deleteLast();">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="undefined"
+            >
+              <path
+                d="m456-320 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56ZM320-160 80-480l240-320h560v640H320ZM180-480l180 240h440v-480H360L180-480Zm310 0Z"
+              />
+            </svg>
+          </button>
+          <button onclick="appedToDisplay('0');">0</button>
+          <button onclick="appedToDisplay('.');">.</button>
+          <button onclick="calculate('=');">=</button>
+        </div>
+      </section>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
