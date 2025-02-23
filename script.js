@@ -27,7 +27,7 @@ function appedToDisplay(value) {
     }
 
     if (isResultDisplayed && "+-*/%".includes(value)) {
-        isResultDisplayed = false; // Reset flag but continue adding operator
+        isResultDisplayed = false;
     }
 
     if (current === "" || current === "error") {
@@ -52,7 +52,7 @@ function calculate() {
     if (current !== "" && current !== "error") {
         try {
             // Evaluate the expression and update the display with the result
-            let result = eval(current);
+            let result = calculateFnc(current);
 
             // If result is a valid number, display it; otherwise, display an error
             if (!isNaN(result)) {
@@ -68,10 +68,51 @@ function calculate() {
     }
 }
 
+function calculateFnc(expression) {
+    const operators = /[/*+%]/;
+    let tokens = expression.split(/([/*+\-()%])/).map(sign => sign.trim());
+
+    if (tokens.length < 3) {
+        return;
+    }
+
+    let result = parseFloat(tokens[0]);
+    for (let i = 1; i < tokens.length; i += 2) {
+        let operator = tokens[i];
+        let nextNum = parseFloat(tokens[i + 1]);
+
+        if (isNaN(nextNum)) {
+            return NaN;
+        }
+
+        switch (operator) {
+            case "+":
+                result += nextNum;
+                break;
+
+            case "-":
+                result -= nextNum;
+                break;
+
+            case "*":
+                result *= nextNum;
+                break;
+
+            case "/":
+                result = nextNum !== 0 ? result / nextNum : "error";
+                break;
+
+            case "%":
+                result = result * (nextNum / 100);
+                break;
+        }
+    }
+    return result;
+}
+
 function convert() {
     let current = display.textContent;
     if (!isNaN(current) && current.trim() !== '') {
         display.textContent = Number(current) * -1;
     }
 }
-
